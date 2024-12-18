@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Middleware</title>
+</head>
+<body>
+    <h1>Middleware</h1>
+    <p>Middleware, também conhecido como “software intermediário”, é uma camada de software que age como uma ponte entre sistemas operacionais e aplicações em uma rede distribuída. A principal função do middleware é facilitar a comunicação e a troca de dados entre aplicações de software diferentes</p>
+
+    <p>Para adicionar no Express:</p>
+
+    <pre>
+        <code>app.use((req, res, next)=>{
+            //code
+                ////
+            next()
+        })</code>
+    </pre>
+
+    <p>Possui uma sintaxe semelhante à uma rota, mas possui o parametro next, que é usado para passar para a proxima etapa.</p>
+</body>
+</html>

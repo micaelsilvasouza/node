@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotas externas Express</title>
+</head>
+<body>
+    <h1>Rotas externas</h1>
+    <p>Com o Express, é possivel criar rotas em arquivos separadados, para serem usados no arquivo principal</p>
+    <p>Crie um arquivo chamado rota-teste.js, adicione o Express, e use o sequinte código para criar uma rota:</p>
+    <pre>
+        <code>const rota = express.Router()
+
+        rota.get("/", (req, res)=>{
+            res.send("página principal da rota")
+        })</code>
+    </pre>
+
+    <p>Onde usando o Express, criamos uma constante, que recebe uma intancia de Router, e funciona com se fosse uma criação de uma rota normal</p>
+
+    <p>Para fazer com que seja usada na página principal, defina:</p>
+    <pre>
+        <code>app.use("/rotateste", rota)</code>
+    </pre>
+
+    <p>Onde todas as rotas criadas no arquivo rota-teste.js, pode ser acessada, a partir da rota principal, pela rota /rotateste</p>
+</body>
+</html>

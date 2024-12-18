@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequelize FindAll</title>
+</head>
+<body>
+    <h1>Sequelize FindAll</h1>
+    <p>FindAll é usado para buscar dados em uma tabela</p>
+    <p>Busca todos os dados no model Registro:</p>
+    <pre>
+        <code>Registro.findAll().then((registros)=>{
+            console.log(registros)
+        })</code>
+    </pre>
+
+    <p>Busca apenas dados especificos no model Registro:</p>
+    <pre>
+        <code>Registro.findAll({attributes: ["id", "horario", "descricao"]}).then((registros)=>{
+            console.log(registros)
+        })</code>
+    </pre>
+    
+    <p>Buscar dados usando a WHERE, encotrando os dados para quando o id for igual a 1:</p>
+    <pre>
+        <code>Registro.findAll({where: {id: 1}}).then((registros)=>{
+            console.log(registros)
+        })</code>
+    </pre>
+    <p>Para mais filtros adicione mais atributos ao objeto "where"</p>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node MongoDB</title>
+</head>
+<body>
+    <h1>Inserir</h1>
+    <p>Para inserir um registro, ou documento como é chamado no MongoDB:</p>
+
+    <pre>
+        <code>const Teste = mongoose.model("testes")
+
+        new TesteModel({
+            title: "123 testando",
+            value: 123
+        }).save().then(()=>{
+            console.log("Created");
+        })</code>
+    </pre>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node MYSQL</title>
+</head>
+<body>
+    <h1>Criar Tabelas</h1>
+    <p>Para criar uma tabela no MySQL, use a instrução "CREATE TABLE". Certifique-se de definir o nome do banco de dados ao criar a conexão:</p>
+    <pre>
+    <code>
+        var con = mysql.createConnection({
+            host: "localhost",
+            user: "yourusername",
+            password: "yourpassword",
+            <strong>database</strong>: "mydb"
+        });
+          
+        con.connect(function(err) {
+            if (err) throw err;
+            console.log("Connected!");
+            var sql = "CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))";
+            con.query(sql, function (err, result) {
+              if (err) throw err;
+              console.log("Table created");
+            });
+        });
+    </code>
+    </pre>
+</body>
+</html>

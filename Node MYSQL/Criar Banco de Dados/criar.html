@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node MYSQL</title>
+</head>
+<body>
+    <h1>Criando um banco de dados</h1>
+    <p>Para criar um banco de dados no MySQL, use a instrução "CREATE DATABASE":</p>
+    <pre>
+    <code>
+        con.connect(function(err) {
+            if (err) throw err;
+            console.log("Connected!");
+            con.query("CREATE DATABASE mydb", function (err, result) {
+                if (err) throw err;
+                console.log("Database created");
+            });
+        });
+    </code>
+    </pre>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Express</title>
+</head>
+<body>
+    <h1>Express POST</h1>
+    <p>Express pode trabalhar com requisições do tipo post, para isso use a função post para criar uma rota do tipo post</p>
+    <pre>
+        <code>app.post("/post", (req, res)=>{
+            res.send("Formulario recebido")
+        })</code>
+    </pre>
+    <p>Para utilizar os dados recebidos por post, precisamos do módulo body-parse, use o comando para instalar:</p>
+    <pre>
+        <code>npm install body-parser</code>
+    </pre>
+    <p>Para configura a utilização do módulo:</p>
+    <pre>
+        <code>app.use(bodyParser.urlencoded({extended: false}))
+        app.use(bodyParser.json())</code>
+    </pre>
+    <p>E use o argumento de requisição para acessar o dado recebido</p>
+    <pre>
+        <code>req.body.nome</code>
+    </pre>
+</body>
+</html>

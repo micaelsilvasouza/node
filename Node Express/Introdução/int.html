@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Express</title>
+</head>
+<body>
+    <h1>Node Express</h1>
+    <p>Express é um framework, que criar um servidor web usando node</p>
+    <p>Use o comando para instalalo</p>
+    <pre>
+        <code>npm install express</code>
+    </pre>
+    <p>
+        Importe o express usando o comando:
+    </p>
+    <pre>
+        <code>const express = require("express")</code>
+    </pre>
+    <p>
+        Para criar um página para a rota principal, use o cógio a seguir:
+    </p>
+    <pre>
+    <code>
+        const express = require("express")
+        const app = express()
+
+        app.get("/", (req, res)=>{
+            res.send("Essa é minha página criada usando Express no Node!")
+        })
+
+        app.listen(8081, ()=>{
+            console.log("Servidor rodando na url http://localhost:8081")
+        })
+    </code>
+    </pre>
+    <ul>
+        <li>app - Recebe todas as funções de Express e é responsavél por fazer o servidor gerar as páginas</li>
+        <li>get - Cria uma rota dentro da aplicação</li>
+        <li>listem - Excuta o servidor na porta especificada</li>
+    </ul>
+</body>
+</html>

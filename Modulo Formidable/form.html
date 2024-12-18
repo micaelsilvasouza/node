@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo para Carregar Arquivos</title>
+</head>
+<body>
+    <h1>Modulo Formidable</h1>
+    <p>Existe um módulo muito bom para trabalhar com uploads de arquivos, chamado "Formidable". O módulo Formidable pode ser baixado e instalado usando o NPM:</p>
+    <pre>
+        <code>npm install formidable</code>
+    </pre>
+    <p>Depois de baixar o módulo Formidable, você pode incluir o módulo</p>
+    <pre>
+        <code>var formidable = require('formidable');</code>
+    </pre>
+    <p>
+        Quando um arquivo é carregado com êxito no servidor, ele é colocado em um pasta temporária.
+        <br>
+        O caminho para este diretório pode ser encontrado no objeto "files", passado como o terceiro argumento na função de retorno de chamada do método.parse()
+        <br>
+        Para mover o arquivo para a pasta de sua escolha, use o módulo Sistema de Arquivos, e renomeie o arquivo:
+    </p>
+
+    <pre>
+    <code>
+        var http = require('http');
+        var formidable = require('formidable');
+        var fs = require('fs');
+
+        http.createServer(function (req, res) {
+            var form = new formidable.IncomingForm();
+            form.parse(req, function (err, fields, files) {
+                var oldpath = files.filetoupload.filepath;
+                var newpath = 'C:/Users/Your Name/' + files.filetoupload.originalFilename;
+                fs.rename(oldpath, newpath, function (err) {
+                    if (err) throw err;
+                    res.write('File uploaded and moved!');
+                    res.end();
+                });
+            });
+        }).listen(8080)
+    </code>
+    </pre>
+    <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">Testando</a>
+</body>
+</html>

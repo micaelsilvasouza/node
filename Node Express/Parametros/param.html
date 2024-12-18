@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Express</title>
+</head>
+<body>
+    <h1>Parâmetros</h1>
+    <p>Parâmetros são dados que podem ser passados na url, mas funcionam diferentes de dados enviados por requisições do tipo get.</p>
+    <p>Funcionam mais precisamente como um caminho em uma url, exemplo</p>
+    <pre>
+        <code>localhots:8081/pagina/dadoA/dadoB</code>
+    </pre>
+    <ul>
+        <li>localhots:8081 - O host onde a pagina se encontra, junto com a porta do servidor</li>
+        <li>pagina - A rota da pagina que pede os parâmetros</li>
+        <li>dadoA - O dado na forma de parâmetro passado para a url</li>
+        <li>dadoB - O dado na forma de parâmetro passado para a url</li>
+    </ul>
+    <p>
+        Para criar a opção de parâmetros na pagina é necessário informa-los no primeiro argumento do método get, onde criamos a rota, usando a sintaxe /:param_name.
+        <br>
+        Podemos criar mais de um, simplemente adicionando um após o outro /:paramA/:paramB.
+        <br>
+        Acessamos na função de calback através 
+    </p>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassportExpress</title>
+</head>
+<body>
+    <h1>Passport</h1>
+    <p>O Passport é um middleware de autenticação para Node.js. Extremamente flexível e modular, o Passport pode ser inserido discretamente em qualquer aplicativo da Web baseado no Express. Um conjunto abrangente de As estratégias oferecem suporte à autenticação usando nome de usuário e senha, Facebook, Twitter e muito mais.</p>
+    <p>Acesse para conhecer mais: <a href="https://www.passportjs.org/ target="_blank" rel="noopener noreferrer">Passport</a></p>
+
+    <pre>
+        <code>npm install passport</code>
+    </pre>
+
+    <p>Para auxiliar o passport, é preciso instalar uma biblioteca de extratégia, possui muitas, mas a mais simples e a local</p>
+
+    <pre>
+        <code>npm install passport-local</code>
+    </pre>
+
+    <p>Configurando o passport</p>
+    <pre>
+        <code>passport.use(new local_strategy({usernameField: "email", passwordField: "senha"}, (email, senha, done)=>{
+            if(senha == "senha"){
+                return done(null, {dados: "dados que vinha do banco de dadso"}, {message: "Senha correta"})
+            }else{
+                return done(null, false, {message: "Senha incorreta"})
+            }
+        }))</code>
+    </pre>
+    <p>O objeto, define quais são o nomes dos campos que usaremos para a autenticação</p>
+    <p>Os paramtros da função de seta, é o dado de indenticação de usuario e a senha para validar, e o parametro done, é uma função que retorna se ouve erro, e os dados encontrados, alem de um objeto com uma mensagem com atributo</p>
+
+    <p>Para salvar dado em uma sesão use os metodos serializeUser e o deserializeUser</p>
+    <pre>
+        <code>passport.serializeUser((usuario, done)=>{ // uma seção com o id de usuario
+            done(null, usuario.id) // pdoe ser qualquer atributo do usario
+        })
+        
+        passport.deserializeUser((id, done)=>{ // uma seção com todo os dados do usuario
+            done(null, user)
+        })</code>
+    </pre>
+
+    <p>Vale lembrar que dentro de todas essa configurações, deve-se ter uma autenticação no banco de dados</p>
+    <p>Para configurar para Express usar, deve-se adicionar, depois da sessão e antes do flash</p>
+
+    <pre>
+        <code>app.use(passport.initialize())
+        app.use(passport.session())</code>
+    </pre>
+
+    <p>Para usar executar a autenticação:</p>
+    <pre>
+        <code>app.post("/teste", passport.authenticate("local", {
+            successRedirect: "/recebido",
+            failureRedirect: "/error",
+            failureFlash: true,
+        }))
+        </code>
+    </pre>
+
+    <p>O req.user, é um objeto que o passport cria, com os dados obtidos através da autenticação.</p>
+    <p>O metodo req.isAuthenticate, retorna se o acesso atual é autenticado.</p>
+    <p>O metodo req.logout, funciona para deletar as informações do usuario salvas, e literalmente dar logout.</p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node MongoDB</title>
+</head>
+<body>
+    <h1>Atualizar</h1>
+    <p>Para selecionar os dados use o metodo updateOne, funcionando igual ao do MongoDB:</p>
+    <pre>
+        <code>TesteModel.updateOne({_id: "675f46a60ed7725efee67e38"}, {title: "Atualizado", value: 456})
+        .then(() => {
+            console.log("Atualizado com sucesso")
+        }).catch(err => {
+            console.log("Erro: " + err)
+        })</code>
+    </pre>
+    <p>Ainda possui o metodo updateMany, que é usado para o MongoDB, possuindo a mesma sintaxe.</p>
+    <pre>
+        <code>TesteModel.updateMany({}, {title: "Atualizado", value: 456})
+        .then(() => {
+            console.log("Atualizado com sucesso")
+        }).catch(err => {
+            console.log("Erro: " + err)
+        })</code>
+    </pre>
+
+    <p>E o metodo que atualizar e retorna os dados::</p>
+    <pre>
+        <code>TesteModel.findOneAndUpdate({_id: "675f46a60ed7725efee67e3a"}, {title: "Novamete de volta", value: 665})
+        .then((dados) => {
+            console.log("Atualizado com sucesso")
+            console.log(dados)
+        }).catch(err => {
+            console.log("Erro: " + err)
+        })</code>
+    </pre>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node JS</title>
+</head>
+<body>
+    <h1>Baixar node.js</h1>
+    <p>O site oficial do Node.js tem instruções de instalação para Node.js: <a href="https://nodejs.org" target="_blank">https://nodejs.org</a></p>
+    <p>
+        Depois de baixar e instalar Node.js em seu computador, vamos tentar exibir "Hello World" em um navegador da web.
+        <br>
+        Crie um arquivo Node.js chamado "teste.js" e adicione o seguinte código:
+    </p>
+    <pre>
+    <code>
+        var http = require('http');
+
+        http.createServer(function (req, res) {
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.end('Hello World!');
+        }).listen(8080);
+    </code>
+    </pre>
+    <p>
+        Salve o arquivo em seu computador.
+        <br>
+        O código diz ao computador para escrever "Hello World!" se alguém (por exemplo, um navegador da web) tentar para acessar seu computador na porta 8080.
+    </p>
+    <p>
+        Node.js arquivos devem ser iniciados no programa "Command Line Interface" do seu computador.
+        <br>
+        Navegue até a pasta que contém o arquivo "teste.js"
+    </p>
+    <p>
+        O arquivo que você acabou de criar deve ser iniciado por Node.js antes de qualquer ação pode ocorrer.
+        <br>
+        Inicie sua interface de linha de comando, escreva <code>node teste.js</code> e pressione Enter
+    </p>
+    <p>
+        Agora, seu computador funciona como um servidor!
+        <br>
+        Se alguém tentar acessar seu computador na porta 8080, receberá um erro "Olá Mundo!" mensagem em troca!
+        <br>
+        Inicie seu navegador de internet e digite o endereço: <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>
+    </p>
+    <p>Para parar a execução ultilize o atalho CTRL + C</p>
+    
+</body>
+</html>

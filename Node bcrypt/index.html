@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node JS</title>
+</head>
+<body>
+    <h1>Node bcrypt</h1>
+    <p>Codificar valores em hash</p>
+
+    <pre>
+        <code>npm install bcryptjs</code>
+    </pre>
+
+    <p>Cria um hash apartir de um salt, que gerar mais complexidade ao hash</p>
+    <pre>
+        <code>const bcrypt = require("bcrypt")
+        var senha
+
+        bcrypt.genSalt(2, (err, salt)=>{
+            bcrypt.hash("testando", salt, (err, hash)=>{
+                senha = hash
+            })
+        })</code>
+    </pre>
+
+    <p>Para comparar um valor ao um hash, use o metodo compare</p>
+    <pre>
+        <code>bcrypt.compare("testando", senha, (err, batem)=>{
+            console.log(batem)
+        })</code>
+    </pre>
+
+    <p>Se "testando" for igual senha, o batem é igual a true</p>
+</body>
+</html>

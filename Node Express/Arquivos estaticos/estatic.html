@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Express</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Usando arquivos estáticos</h1>
+    <p>Os arquivos estáticos, sãos os arquivos css e js, que fazem parte do front-end.</p>
+    <p>Para configurar os usos de arquivos estáticos:</p>
+    <pre>
+        <code>app.use(express.static(__dirname + "/estaticos"))</code>
+    </pre>
+    <p>Dentros de express.static, é passado como argumento o diretório da pasta, onde ficam os arquivos estáticos.</p>
+    <p>A variável __dirname, é usada para retornar o diretório local, assim evitar erros.</p>
+    <p>Caso a pasta fique em um diretório diferente, basta usar o modulo path</p>
+    <pre>
+        <code>app.use(express.static(path.join(__dirname + "/estaticos")))</code>
+    </pre>
+    <p>O metodo uni os diretórios</p>
+    <p>Uma boa ideia é usar o bootstrap como diretório, pois facilita na criação do front-end</p>
+</body>
+<script src="/js/main.js"></script>
+</html>

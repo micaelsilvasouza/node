@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo Enviar Email</title>
+</head>
+<body>
+    <h1>O módulo Nodemailer</h1>
+    
+    <p>
+        O módulo Nodemailer facilita o envio de e-mails do seu computador.
+        <br>
+        O módulo Nodemailer pode ser baixado e instalado usando o npm:
+    </p>
+    <pre>
+        <code>C:\Users\Your Name>npm install nodemailer</code>
+    </pre>
+    <p>Depois de fazer o download do módulo Nodemailer, você pode incluir o módulo Em qualquer aplicação:</p>
+    <pre>
+        <code>var nodemailer = require('nodemailer');</code>
+    </pre>
+    <p>
+        Agora você está pronto para enviar e-mails do seu servidor.
+        <br>
+        Use o nome de usuário e a senha do provedor de e-mail selecionado para enviar um Email. Este tutorial mostrará como usar sua conta do Gmail para enviar um Email:
+    </p>
+    <pre>
+    <code>
+        var nodemailer = require('nodemailer');
+
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'youremail@gmail.com',
+                pass: 'yourpassword'
+            }
+        });
+
+        var mailOptions = {
+            from: 'youremail@gmail.com',
+            to: 'myfriend@yahoo.com',
+            subject: 'Sending Email using Node.js',
+            text: 'That was easy!'
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+    </code>
+    </pre>
+    <p>Para enviar um e-mail para mais de um destinatário, adicione-os à propriedade "to" do objeto mailOptions, separados por vírgulas: <code>to: 'myfriend@yahoo.com, myotherfriend@yahoo.com'</code></p>
+    <p>Para enviar texto formatado em HTML em seu e-mail, use a propriedade "html" em vez de A propriedade "texto": <code>html: '&lt;h1&gt;Welcome&lt;/h1&gt;&lt;p&gt;That was easy!&lt;/p&gt;'</code></p>
+</body>
+</html>

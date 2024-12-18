@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>body{ /*Não funciona linkando ainda*/
+        background-color: beige;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 30px;
+    }</style>
+    <title>Node Express</title>
+</head>
+<body>
+    <h1>Send File</h1>
+    <p>
+        A função sendFile() envia um arquivo para que acessar o servidor.
+        <br>
+        Como argumento ela recebe o diretório de onde o arquivo está localizado.
+        <br>
+        Para evitar erro quando o arquivo se encontra no mesmo diretório, use a variavel __dirname, para retorna o diretório completo de onde seu arquivo js se encontra, basta concatenar com o resto do diretório.
+    </p>
+
+    <pre>
+    <code>
+        app.get("/", (req, res)=>{
+            res.sendFile(__dirname + "/send.html")
+        })
+    </code>
+    </pre>
+    <p>Assim essa página pode ser enviada e visualizada quando a pessa acessa o servidor</p>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo Sistemas de Arquivos</title>
+    <style>
+        #voltar{
+            background-color: blueviolet;
+            color: white;
+            font-weight: 900;
+            font-size: 2em;
+            padding: 15px;
+            border-radius: 20px;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modulo Sistemas de Arquivos</h1>
+    <p>O módulo do sistema de arquivos Node.js permite que você trabalhe com o sistema de arquivos em seu computador.</p>
+    <pre>
+        <code>var fs = require('fs');</code>
+    </pre>
+    <p>Uso comum para o módulo Sistema de Arquivos:</p>
+    
+    <ul id="lista">
+        <li><a href="#ler">Ler arquivos</a></li>
+        <li><a href="#criar">Criar arquivos</a></li>
+        <li><a href="#atua">Atualizar arquivos</a></li>
+        <li><a href="#del">Excluir arquivos</a></li>
+        <li><a href="#ren">Renomear arquivos</a></li>
+    </ul>
+
+    <h2 id="ler">Ler um arquivos</h2>
+    <p>O método fs.readFile() é usado para ler arquivos em seu computador.</p>
+    <p>O método possui dois argumentos: fs.readFile(arq, callback(err, data))</p>
+    <ol>
+        <li>arq: O nome do arquivo que se deseja ler</li>
+        <li>callback: Função que será executada no retorno da leitura, tendo dois arqumentos</li>
+        <ol>
+            <li>err: Objeto de erro, quando ocorrer erro na leitura do arquivo</li>
+            <li>data: O dado obtido da leitura do arquivo</li>
+        </ol>
+    </ol>
+    <pre>
+    <code>
+        var http = require('http');
+        var fs = require('fs');
+        http.createServer(function (req, res) {
+            fs.readFile('demofile1.html', function(err, data) {
+                res.writeHead(200, {'Content-Type': 'text/html'});
+                res.write(data);
+                return res.end();
+            });
+        }).listen(8080);
+    </code>
+    </pre>
+    <a href="http://localhost:8080/" target="_blank">Exemplo de leitura de arquivo</a>
+
+    <h2 id="criar">Criar um arquivos</h2>
+    <p>O método fs.open() recebe um "sinalizador" como o segundo argumento, se o sinalizador é "w" para "gravação", o arquivo especificado é aberto para gravação. Se o arquivo não existir, um arquivo vazio será criado:</p>
+    <pre>
+    <code>
+        var fs = require('fs');
+
+        fs.open('mynewfile2.txt', 'w', function (err, file) {
+            if (err) throw err;
+            console.log('Saved!');
+        });
+    </code>
+    </pre>
+
+    <h2 id="atua">Atualizar um arquivo</h2>
+    <p>O módulo Sistema de Arquivos possui métodos para atualizar arquivos:</p>
+    <ul>
+        <li>fs.appendFile()</li>
+        <li>fs.writeFile()</li>
+    </ul>
+    <p>O método fs.appendFile() acrescenta o conteúdo especificado a um arquivo. Se o arquivo não existe, o arquivo será criado:</p>
+    <pre>
+    <code>
+        var fs = require('fs');
+
+        fs.appendFile('mynewfile1.txt', ' This is my text.', function (err) {
+            if (err) throw err;
+            console.log('Updated!');
+        });
+    </code>
+    </pre>
+    <p>
+        O método fs.writeFile substitui o arquivo e o conteúdo especificados, se existir. Se o arquivo não existir, um novo arquivo, contendo o conteúdo especificado, ser criado:
+    </p>
+    <pre>
+    <code>
+        var fs = require('fs');
+
+        fs.writeFile('mynewfile3.txt', 'This is my text', function (err) {
+            if (err) throw err;
+            console.log('Replaced!');
+        });
+    </code>
+    </pre>
+
+    <h2 id="del">Excluir um arquivo</h2>
+    <p>
+        Para excluir um arquivo com o módulo Sistema de Arquivos, use o método fs.unlink().
+    </p>
+    <pre>
+    <code>
+        var fs = require('fs');
+
+        fs.unlink('mynewfile2.txt', function (err) {
+            if (err) throw err;
+            console.log('File deleted!');
+        });
+    </code>
+    </pre>
+
+    <h2 id="ren">Renomear um arquivo</h2>
+    <p>
+        Para renomear um arquivo com o módulo Sistema de Arquivos, use o método fs.rename().
+    </p>
+    <pre>
+    <code>
+        var fs = require('fs');
+
+        fs.rename('mynewfile1.txt', 'myrenamedfile.txt', function (err) {
+            if (err) throw err;
+            console.log('File Renamed!');
+        });
+    </code>
+    </pre>
+
+    <form action="http://localhost:8080" method="get" target="_blank">
+        <div>
+            <label for="nome">Nome do arquivo:</label>
+            <input type="text" id="nome" name="arq">
+        </div>
+        <div>
+            <textarea name="txt" title="txt" cols="100" rows="30"></textarea>
+        </div>
+        <div>
+            <input type="submit" value="Criar arquivo">
+        </div>
+    </form>
+
+    <a href="#lista" id="voltar">&uparrow;</button>
+</body>
+</html>

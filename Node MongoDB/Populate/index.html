@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node MongoDB</title>
+</head>
+<body>
+    <h1>Populate</h1>
+    <p>É um metodo usado para substituir automaticamente um campo em um documento pelos dados reais de um documento relacionado.</p>
+    <p>Por exemplo, se você tiver duas coleções, como Users e Posts, em que cada postagem armazena um ID de usuário para fazer referência ao autor, poderá usar populate() para substituir esse ID de usuário na coleção Posts pelas informações completas do usuário da coleção Users. Isso facilita o acesso a dados relacionados sem a necessidade de consultar manualmente cada coleção.</p>
+
+    <h2>Criando coleções relacionados</h2>
+    <p>Coleção users</p>
+    <pre>
+        <code>mongoose.model("posts", Schema({
+            user_id:{
+                type: Schema.Types.ObjectId,
+                require: true
+            },
+        
+            title: {
+                type: String,
+                require: true
+            },
+        
+            body:{
+                type: String,
+                require: true
+            }
+        }))
+            
+        const User = mongoose.model("users")</code>
+    </pre>
+
+    <p>Coleção posts</p>
+    <pre>
+        <code>mongoose.model("posts", Schema({
+            user_id:{
+                type: Schema.Types.ObjectId,
+                ref: "users",
+                require: true
+            },
+        
+            title: {
+                type: String,
+                require: true
+            },
+        
+            body:{
+                type: String,
+                require: true
+            }
+        }))
+            
+        const User = mongoose.model("users")</code>
+    </pre>
+
+    <p>Use o tipo o ObjectId, para usar o id do mongo, e o ref para indicar qual coleção esse dado se refere</p>
+
+    <p>Execute uma busca, usando o metodo populate, passando o nome do campo que é usado para se referir ao id de users</p>
+    <pre>
+        <code>Post.find().populate("user_id").then(data=>{
+            console.log(data)
+        }).catch(err => {
+            console.log(err)
+        })</code>
+    </pre>
+    <p>Assim retonas todas os documentos na collection, e o no campo de referência, aparece como um objeto, com o documento do user, para aquele id</p>
+    <pre>
+        <code>{
+            _id: new ObjectId('6760b0511f4de46f076cf89d'),
+            user_id: {
+                _id: new ObjectId('6760ac4b5bcb60df105afe5e'),
+                nome: 'Douglas',
+                __v: 0
+            },
+            title: 'POST DOUGLAS',
+            body: 'Nada demais',
+            __v: 0
+        }</code>
+    </pre>
+</body>
+</html>

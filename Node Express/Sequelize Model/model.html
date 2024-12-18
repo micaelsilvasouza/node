@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Express</title>
+</head>
+<body>
+    <h1>Sequelize Model</h1>
+    <p>Model é uma forma do sequelize criar tabelas, sem a necessidade de digitar comandos SQL</p>
+    <p>Para criar um model usamos a função define(), que cria uma tabela.</p>
+    <pre>
+        <code>const tabela = sequelize.define(nome, campos)</code>
+    </pre>
+    <ul>
+        <li>nome - Nome da tabela</li>
+        <li>campos - Campos de informações da tabela, informados no formato object</li>
+    </ul>
+    <pre>
+        <code>const Usuario = sequelize.define("usuarios", {
+            nome: {
+                type: Sequelize.STRING
+            },
+            sobrenome: {
+                type: Sequelize.STRING
+            },
+            email: {
+                type: Sequelize.STRING
+            },
+            dataNascimento: {
+                type: Sequelize.DATEONLY
+            }
+        })
+    
+        Usuario.sync({force: true})</code>
+    </pre>
+    <p>Usuario.sync({force: true}), cria a tabela, e o argumento funciona para força a criação da tabela, garantindo que seja sempre criada.</p>
+    <p>Para inserir dados na tabela, use a função create().</p>
+    <pre>
+        <code>Usuario.create({
+            nome: "André",
+            sobrenome: "Silva",
+            email: "andresilva@gmail.com",
+            dataNascimento: "1990-02-15"
+        })</code>
+    </pre>
+    <p>Para acessar todos os dados use a função all:</p>
+    <pre>
+        <code>Usuario.all().then((dados)=>{
+            console.log(dados)    
+        })</code>
+    </pre>
+</body>
+</html>

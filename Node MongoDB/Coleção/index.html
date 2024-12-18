@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node MongoDB</title>
+</head>
+<body>
+    <h1>Coleção</h1>
+    <p>Uma coleção no MongoDB é o mesmo que uma tabela no MySQL</p>
+    <pre>
+        <code>const TesteSchema = mongoose.Schema({ //Criar schema da coleção
+            titte: {
+                type: String, //determina o tipo do campo
+                require: true //determina a obrigatoriedade
+            },
+        
+            data: {
+                type: Date
+            }
+        })
+        
+        mongoose.model("testes", TesteSchema) // Criar a coleção</code>
+    </pre>
+    <p>No MongoDB, uma coleção não é criada até que Obtém conteúdo. O MongoDB aguarda até que você insira um documento antes de realmente criar a coleção.</p>
+</body>
+</html>

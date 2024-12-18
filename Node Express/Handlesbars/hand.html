@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Express</title>
+</head>
+<body>
+    <h1>Handlesbars</h1>
+    <p> Handlebars serve para exibir informações do back-end de uma forma robusta no HTML.</p>
+    <p>Use o comando para instalar:</p>
+    <pre>
+        <code>npm install express-handlebars</code>
+    </pre>
+    <p>Para fazer com que o Node Express use o Handlebars, use as linhas de configuração:</p>
+    <pre>
+        <code>app.engine("handlebars", handlebars.engine({defaultLayout: "main"}))
+        app.set("view engine", "handlebars")</code>
+    </pre>
+    <p>
+        Agora dentro da pasta onde se encontra o projeto, ou seja o arquivo js que contem o app Express.
+        <br>
+        Crie o diretório <code>views/layouts</code>
+        <br>
+        Dentro desse diretório crie um arquivo chamado <code>main.handlebars</code>
+        <br>
+        Dentro desse arquivo ficará o HTML que servirá de padrão a ser usado pelo handlebars na construção do projeto.
+    </p>
+    <p>Dentro do body do arquivo handlebars coloque:</p>
+    <pre>
+        <code>{{{body}}}</code>
+    </pre>
+    <p>Isso chamará um arquivo, com a extenção handlebars dentro da pasta views, que contem o conteudo HTML e adicionara dentro da chamada:</p>
+    <pre>
+        <code>app.get("/",(req, res)=>{
+            res.render(name, obj)
+        })</code>
+    </pre>
+    <ul>
+        <li>name - nome do arquivo, sem necessidade da extenção handlebars</li>
+        <li>obj - Objeto contendo propriedades são exibidas dentro do arquivo, usando pares de chaves ({{prop}})</li>
+    </ul>
+
+   <a href="hand2.html">Proximo</a>
+</body>
+</html>

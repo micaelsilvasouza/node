@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Eventos</title>
+</head>
+<body>
+    <h1>Node Eventos</h1>
+    <p>Cada ação em um computador é um evento. Como quando uma conexão é feita ou um arquivo é aberto. Objetos em Node.js podem disparar eventos, como o objeto readStream é acionado eventos ao abrir e fechar um arquivo:</p>
+    <pre>
+    <code>
+        var fs = require('fs');
+        var rs = fs.createReadStream('./demofile.txt');
+        rs.on('open', function () {
+            console.log('The file is open');
+        });
+    </code>
+    </pre>
+    <p>Node.js tem um módulo embutido, chamado "events", onde você pode criar, disparar e ouvir seus próprios Eventos.</p>
+    <p>Para incluir o módulo Eventos interno, use o método require(). Além disso, todas as propriedades e métodos de evento são uma instância de um EventEmitter. Para poder acessar essas propriedades e métodos, crie um objeto EventEmitter:</p>
+    <pre>
+    <code>
+        var events = require('events');
+        var eventEmitter = new events.EventEmitter();
+    </code>
+    </pre>
+    <p>
+        Você pode atribuir manipuladores de eventos aos seus próprios eventos com o EventEmitter objeto.
+        <br>
+        No exemplo abaixo, criamos uma função que será executado quando um evento "grito" é disparado.
+        <br>
+        Para disparar um evento, use o método.emit()
+    </p>
+    <pre>
+    <code>
+        var events = require('events');
+        var eventEmitter = new events.EventEmitter();
+    
+        //Create an event handler:
+        var myEventHandler = function () {
+            console.log('I hear a scream!');
+        }
+    
+        //Assign the event handler to an event:
+        eventEmitter.on('scream', myEventHandler);
+    
+        //Fire the 'scream' event:
+        eventEmitter.emit('scream');
+    </code>
+    </pre>
+</body>
+</html>

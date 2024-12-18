@@ -1,0 +1,38 @@
+<h1>Testando HANDLEBARS</h1>
+<p>Dado recebido da variavel nome: {{nome}}</p>
+<p>Dado recebido da variavel idade: {{idade}}</p>
+<p>ARR = {{arr}}</p>
+<p>
+    {{#if cond}}
+        Verdade
+    {{else}}
+        Metira
+    {{/if}}
+</p>
+<p>Valor: Impossivel</p>
+<ul>
+    {{#each idade}}
+        <li>112</li>
+    {{/each}}
+</ul>
+<p>Array normal:</p>
+<ul>
+    {{#each arr}}
+        <li>{{@index}}: {{this}}</li>
+    {{/each}}
+</ul>
+
+<p>Em caso de uma array de arrays, use apenas o numero do indice entre os colchetes, para acessar os elementos de acordo o indice em cada array</p>
+
+<p>Objeto normal:</p>
+<ul>
+    {{#each obj}}
+        <li>{{@key}}: {{this}}</li>
+    {{/each}}
+</ul>
+<p>Array Objeto</p>
+<ol>
+    {{#each arrobj}}
+        <li>{{name}}: {{year}}</li>
+    {{/each}}
+</ol>

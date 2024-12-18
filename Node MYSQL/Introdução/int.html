@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node MYSQL</title>
+</head>
+<body>
+    <h1>Node MYSQL</h1>
+    <p>
+        Para acessar um banco de dados MySQL com Node.js, você precisa de um driver MySQL. Este tutorial usará o módulo "mysql", baixado do NPM.
+        <br>
+        Para baixar e instalar o módulo "mysql", abra o Terminal de Comando e execute o seguinte:
+    </p>
+    <pre>
+        <code>C:\Users\Your Name>npm install mysql</code>
+    </pre>
+    <p>
+        Agora você baixou e instalou um driver de banco de dados mysql.
+        <br>
+        Node.js pode usar este módulo para manipular o banco de dados MySQL:
+    </p>
+    <pre>
+        <code>var mysql = require('mysql');</code>
+    </pre>
+    <p>
+        Comece criando uma conexão com o banco de dados. Use o nome de usuário e a senha do seu banco de dados MySQL.
+    </p>
+
+    <pre>
+        <code>
+            var con = mysql.createConnection({
+                host: "localhost",
+                user: "yourusername",
+                password: "yourpassword"
+            });
+
+            con.connect(function(err) {
+                if (err) throw err;
+                console.log("Connected!");
+            });
+        </code>
+    </pre>
+</body>
+</html>

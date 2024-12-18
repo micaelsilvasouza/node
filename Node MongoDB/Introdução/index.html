@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node MongoDB</title>
+</head>
+<body>
+    <h1>Introdução</h1>
+    <p>Node.js pode ser usado em aplicativos de banco de dados. Um dos bancos de dados NoSQL mais populares é o MongoDB.</p>
+
+    <p>Para baixar e instalar o driver mongoose, abra o Terminal de Comando e execute o seguinte:</p>
+    <pre>
+        <code>npm install mongoose</code>
+    </pre>
+
+    <p>Node.js pode usar este módulo para manipular bancos de dados MongoDB:</p>
+    <pre>
+        <code>const mongoose = require("mongoose");</code>
+    </pre>
+
+    <p>Criar o banco de dados</p>
+    <pre>
+        <code>const mongo = require("mongodb").MongoClient
+
+        mongo.connect("mongodb://127.0.0.1:27017/blog", (err, db)=>{
+            if( err )throw err
+            console.log("db criado")
+            db.close()
+        })</code>
+    </pre>
+
+    <p>O MongoDB só criar realmente um banco de dados, quando é adicionada algum dado.</p>
+</body>
+</html>

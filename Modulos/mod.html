@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulos Node JS</title>
+</head>
+<body>
+    <h1>O que é um módulo no Node.js?</h1>
+    <p>
+        Considere os módulos como iguais às bibliotecas JavaScript.
+        <br>
+        Um conjunto de funções que você deseja incluir em seu aplicativo.
+    </p>
+    <p>
+        Node.js possui um conjunto de módulos integrados que você pode usar sem mais instalação.
+        <br>
+        Veja nossa <a href="https://www.w3schools.com/nodejs/ref_modules.asp" target="_blank" rel="noopener noreferrer">Referência de Módulos Integrados</a>  para um lista completa de módulos.
+    </p>
+    <p>
+        Você pode criar seus próprios módulos e incluí-los facilmente em seus aplicativos.
+        <br>
+        O exemplo a seguir cria um módulo que retorna um objeto de data e hora:
+    </p>
+    <pre>
+    <code>
+        exports.myDateTime = ()=>{
+            return Date();
+        }
+    </code>
+    </pre>
+    <p>Salve o código acima em um arquivo chamado "module.js"</p>
+    <p>Agora você pode incluir e usar o módulo em qualquer um dos seus arquivos Node.js.</p>
+    <pre>
+    <code>
+        var http = require("http")
+        var dt = require("./module")
+        http.createServer((req, res)=>{
+            res.writeHead(200,{'Content-Type': 'text/html'})
+            res.write("Data formato completo: " + dt.myDateTime())
+            res.end()
+        }).listen(8080)
+    </code>
+    </pre>
+</body>
+</html>

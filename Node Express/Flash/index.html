@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Express</title>
+</head>
+<body>
+    <h1>Flahs</h1>
+    <p>Instale o connect-flash, para auxliar nas comunicações entre meddleware e rotas, ou de rotas para rotas:</p>
+    <pre>
+        <code>npm install connect-flash</code>
+    </pre>
+    <p>Ou instale express-flash, que funciona semelhante e é mais atual:</p>
+    <pre>
+        <code>npm install express-flash</code>
+    </pre>
+    <p>Para usar o flash, é preciso usar uma sessão</p>
+
+    <p>Para configurar o flash, adicione sempre abaixo da configuração de sessão:</p>
+    <pre>
+        <code>//configurando flash
+        app.use(flash())</code>
+    </pre>
+
+    <p>Para defini um valor de flash em uma rota, ou meddleware, faça dentro da função de rota ou middleware:</p>
+    <pre>
+        <code>req.flash("indentificador", "valor")</code>
+    </pre>
+    
+    <p>E para usar o valor faça:</p>
+    <pre>
+        <code>req.flash("indentificador")</code>
+    </pre>
+
+    <p>O valor retornado é uma matriz, que contem todo os valores que foram adicionados ao "indentificador" flash</p>
+</body>
+</html>

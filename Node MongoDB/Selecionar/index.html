@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node MongoDB</title>
+</head>
+<body>
+    <h1>Selecionar</h1>
+    <p>Para selecionar os dados use o metodo find no objeto de model do moongose:</p>
+    <pre>
+        <code>TesteModel.find().then(dados => {
+            console.log(dados)
+        }).catch(err => {
+            console.log("Erro: " + err)
+        })</code>
+    </pre>
+    <p>Ele pode receber os mesmos parâmetros, que é usado para o MongoDB, possuindo a mesma sintaxe.</p>
+    <p>Além dos metodos then e catch, pode ser usados antes deles, o metodo sort para ordenar os dados, que recebe um objeto, onde informa o atributo que é usado para ordernar, e recebo o valor crecente ou decrecente</p>
+
+    <code>TesteModel.find().sort({value: "desc "}).then(dados => {
+        console.log(dados)
+    }).catch(err => {
+        console.log("Erro: " + err)
+    })
+</body>
+</html>

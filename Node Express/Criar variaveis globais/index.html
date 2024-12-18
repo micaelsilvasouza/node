@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Express</title>
+</head>
+<body>
+    <h1>Criar variáveis globais</h1>
+    <p>Variáveis globais podem ser usadas em qualquer parte do handlebars da aplicação, e para criar uma dentro de uma função express, de requerimento e resposta, basta usar res.locals</p>
+    <pre>
+        <code>app.use((req, res, next)=>{
+            res.locals.nome_da_variavel = "um valor javascript"
+        })
+        
+        app.get("/", (req, res)=>{
+            res.locals.nome_da_variavel = "um valor javascript"
+        })</code>
+    </pre>
+</body>
+</html>

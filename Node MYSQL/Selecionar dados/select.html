@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node MYSQL</title>
+</head>
+<body>
+    <h1>Selecionar Dados</h1>
+    <p>Para selecionar dados de uma tabela no MySQL, use a instrução "SELECT".</p>
+    <pre>
+    <code>
+        con.connect(function(err) {
+            if (err) throw err;
+            con.query("SELECT * FROM customers", function (err, result, fields) {
+              if (err) throw err;
+              console.log(result);
+            });
+        });
+    </code>
+    </pre>
+    <p>
+        Quando os valores de consulta são variáveis fornecidas pelo usuário, você deve escapar dos valores.
+        <br>
+        Isso é para evitar injeções de SQL, que é uma técnica comum de hacking da web para destruir ou usar indevidamente seu banco de dados.
+        <br>
+        O módulo MySQL possui métodos para escapar de valores de consulta:
+    </p>
+    <pre>
+    <code>
+        var adr = 'Mountain 21';
+        var sql = 'SELECT * FROM customers WHERE address = ' + mysql.escape(adr);
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(result);
+        });
+    </code>
+    </pre>
+    <p>
+        Você também pode usar um como um espaço reservado para os valores que você deseja escapar.?
+        <br>
+        Nesse caso, a variável é enviada como o segundo parâmetro no query() método:
+    </p>
+    <pre>
+    <code>
+        var adr = 'Mountain 21';
+        var sql = 'SELECT * FROM customers WHERE address = ?';
+        con.query(sql, [adr], function (err, result) {
+            if (err) throw err;
+            console.log(result);
+        });
+    </code>
+    </pre>
+</body>
+</html>

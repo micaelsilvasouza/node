@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Express</title>
+</head>
+<body>
+    <h1>Sequilize</h1>
+    <p>Um modulo para trabalhar com bancos de dados dentro do node</p>
+    <p>Use o comando para instalar:</p>
+    <pre>
+        <code>npm install --save sequelize</code>
+    </pre>
+    <p>Para trabalhar com bancos de dados mysql é preciso instalar o modulo para trabalhar com mysql</p>
+    <p>Use o comando para instalar o modulo mysql2:</p>
+    <pre>
+        <code>npm install --save mysql2</code>
+    </pre>
+    <p>Lembrando que todos esses comandos instalam os modulos, apenas no local do projeto, para instalar globalmente, use -g no lugar --save</p>
+    <p>Para criar uma conexão ao banco de dados importe o modulo, que representa algo que usaremos para criar uma conexão</p>
+    <pre>
+    <code>
+        const Sequelize = require("sequelize")
+        const sequelize = new Sequelize(db, user, pass, {host, dialect})
+    </code>
+    </pre>
+
+    <ul>
+        <li>Sequelize - Módulo importado</li>
+        <li>sequelize - Objeto de conexão criado por Sequelize</li>
+        <li>db - Database name, nome do banco de dados que deseja conectar</li>
+        <li>user - Nome de usuário que usamos para acessar o mysql</li>
+        <li>pass - Senha de usuário para a conexão</li>
+        <li>{} - Objeto contendo propriedades para a conexão</li>
+        <ul>
+            <li>host - Host de conexão do banco de dados</li>
+            <li>dialect - O tipo de banco de dados a ser usado</li>
+        </ul>
+    </ul>
+    <p>Use a função authenticate para verificar se a conexão foi bem sucedida</p>
+    <pre>
+    <code>
+        sequelize.authenticate().then(()=>{
+            console.log("Conectado com sucesso!")
+        }).catch((err)=>{
+            console.log("Falha ao se conectar!")
+        })
+    </code>
+    </pre>
+
+    <a href="https://sequelize.org/docs/v6/" target="_blank" rel="noopener noreferrer">Documentação Sequelize</a>
+</body>
+</html>
